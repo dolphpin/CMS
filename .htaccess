@@ -1,0 +1,6 @@
+# Block direct requests to the "Public" subdirectory
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule ^Public($|/) - [R=404]
+
+# Rewrite all requests that are not already for the "Public" subdirectory
+    RewriteRule !^Public/ /Public%{REQUEST_URI} [L]
